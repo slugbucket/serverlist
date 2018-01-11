@@ -1,0 +1,40 @@
+<h2>Listing Impact levels</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @impact_levels %>
+<% if can? :create, ImpactLevel %>
+<%= link_to 'New Impact level', new_impact_level_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @impact_levels.each do |impact_level| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => impact_level, :locals => {:display => impact_level.name, :edit_path => edit_impact_level_path(impact_level)} %>
+        <td><%= impact_level.description %></td>
+        <%= render :partial => "shared/delete_link", :object => impact_level, :locals => {:display => "Delete #{impact_level.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @impact_levels %>
+<% if can? :create, ImpactLevel %>
+<%= link_to 'New Impact level', new_impact_level_path %>
+<% end %>
+</div>
+</p>

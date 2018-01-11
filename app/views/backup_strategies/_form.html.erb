@@ -1,0 +1,32 @@
+<%= form_for(@backup_strategy) do |f| %>
+  <% if @backup_strategy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@backup_strategy.errors.count, "error") %> prohibited this backup_strategy from being saved:</h2>
+
+      <ul>
+      <% @backup_strategy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 60%;">
+    <fieldset><legend>Backup strategy details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+        <div class="field" style="float: left;">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :class => "serverlist" %>
+  <br />
+    <%= f.label :description %><br>
+    <%= f.text_area :description, :class => "serverlist" %>
+  </div>
+      </div>
+    </fieldset>
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

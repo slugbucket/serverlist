@@ -1,0 +1,36 @@
+<%= form_for(@package_version) do |f| %>
+  <% if @package_version.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@package_version.errors.count, "error") %> prohibited this package_version from being saved:</h2>
+
+      <ul>
+      <% @package_version.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div style="display: inline; float: left; width: 80%;">
+   <fieldset><legend>Package version details</legend>
+        <div> <!-- wrapper around account details and help divs -->
+     <div class="field" style="float: left;">
+            <%= f.label :name %><br />
+      <%= f.text_field :name, :class => "serverlist" %>
+           </div>
+      <div class="field" style="float: left;">
+            <%= f.label :package_id %><br />
+      <%= f.collection_select :package_id, Package.order(:name), :id, :name, {:selected => @package_version.package_id, :prompt => 'Package', :class => "serverlist"} %>
+     </div>
+         <div> <!-- wrapper around account details and help divs -->
+     <div class="field">
+            <%= f.label :package_architecture_id, "Architecture" %><br />
+      <%= f.collection_select :package_architecture_id, PackageArchitecture.order(:name), :id, :name, {:selected => @package_version.package_architecture_id, :prompt => 'Architecture', :class => "serverlist"} %>
+           </div>
+         </div>
+   </fieldset>
+  </div>
+ <div style="clear: both;"></div>
+ <div class="actions">
+    <%= f.submit :class => "button" %>
+ </div>
+<% end %>

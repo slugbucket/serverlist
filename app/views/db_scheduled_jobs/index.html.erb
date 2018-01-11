@@ -1,0 +1,44 @@
+<h2>Listing Database scheduled jobs</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_scheduled_jobs %>
+<% if can? :create, DbScheduledJob %>
+<%= link_to 'New Database scheduled job', new_db_scheduled_job_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Db job host</th>
+      <th>Description</th>
+      <th>Application</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @db_scheduled_jobs.each do |db_scheduled_job| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => db_scheduled_job, :locals => {:display => db_scheduled_job.name, :edit_path => edit_db_scheduled_job_path(db_scheduled_job)} %>
+        <td><%= DbInstance.find(db_scheduled_job.db_job_host_id).name %></td>
+        <td><%= db_scheduled_job.description.html_safe %></td>
+        <td><%= Application.find(db_scheduled_job.application_id).name %></td>
+        <%= render :partial => "shared/delete_link", :object => db_scheduled_job, :locals => {:display => "Delete #{db_scheduled_job.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_scheduled_jobs %>
+<% if can? :create, DbScheduledJob %>
+<%= link_to 'New Database scheduled job', new_db_scheduled_job_path %>
+<% end %>
+</div>
+</p>

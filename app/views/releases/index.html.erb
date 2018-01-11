@@ -1,0 +1,43 @@
+<h2>Listing Releases</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @releases %>
+<% if can? :create, Release %>
+<%= link_to 'New Release', new_release_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+   <tr class="serverlist">
+         <th>Name</th>
+         <th></th>
+        <th>Description</th>
+        <th></th>
+    <% if can? :destroy, Release %>
+    <th></th>
+    <% end %>
+   </tr>
+  </thead>
+
+  <tbody>
+    <% @releases.each do |release| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+     <%= render :partial => "shared/edit_link", :object => release, :locals => {:display => release.name, :edit_path => edit_release_path(release)} %>
+          <td><%= release.description -%></td>
+          <%= render :partial => "shared/delete_link", :object => release, :locals => {:display => "Delete #{release.name}" } %>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @releases %>
+<% if can? :create, Release %>
+<%= link_to 'New Release', new_release_path %>
+<% end -%>
+</div>
+</p>

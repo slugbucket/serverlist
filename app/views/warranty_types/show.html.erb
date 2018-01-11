@@ -1,0 +1,14 @@
+<p>
+  <strong>Name:</strong>
+  <%= @warranty_type.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @warranty_type.description %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_warranty_type_path(@warranty_type) %> |
+<%= link_to 'Back', warranty_types_path %>
+</div>

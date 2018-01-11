@@ -1,0 +1,20 @@
+<p>
+  <strong>Name:</strong>
+  <%= @release.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @release.description %>
+</p>
+
+<p>
+  <strong>Packages</strong><br />
+  <% @release.package_versions.map(&:id).each do |pv| %>
+  <%= "#{PackageVersion.find(pv).package_version_name}" %><br />
+  <% end %>
+</p>
+<div class="serverlist">
+<%= link_to 'Edit', edit_release_path(@release) %> |
+<%= link_to 'Back', releases_path %>
+</div>

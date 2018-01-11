@@ -1,0 +1,39 @@
+<%= form_for(@db_name) do |f| %>
+  <% if @db_name.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@db_name.errors.count, "error") %> prohibited this db_name from being saved:</h2>
+
+      <ul>
+      <% @db_name.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div style="display: inline; float: left; width: 80%;">
+    <fieldset><legend>Database name details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+  <div class="field" style="float: left; padding-right: 1.2em;">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :class => "serverlist" %>
+  </div>
+          
+    <div class="field" style="float: left;">
+    <%= f.label :db_instance_id, "DB instance" %><br />
+    <%= f.collection_select :db_instance_id, DbInstance.order(:name), :id, :name, {:selected => @db_name.db_instance_id, :prompt => false, :include_blank => false } %>
+  </div>
+
+  <div style="clear: both;"></div>
+  <div class="field" style="float: left;">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, :cols => 40, :rows => 6, :class => "mceEditor" %>
+  </div>
+    </fieldset>
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit "Save db name", :class => "button" %>
+  </div>
+<% end %>

@@ -1,0 +1,40 @@
+<h2>Listing Warranty types</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @warranty_types %>
+<% if can? :create, WarrantyType %>
+<%= link_to 'New Warranty type', new_warranty_type_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @warranty_types.each do |warranty_type| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => warranty_type, :locals => {:display => warranty_type.name, :edit_path => edit_warranty_type_path(warranty_type)} %>
+        <td><%= warranty_type.description.html_safe %></td>
+        <%= render :partial => "shared/delete_link", :object => warranty_type, :locals => {:display => "Delete #{warranty_type.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @warranty_types %>
+<% if can? :create, WarrantyType %>
+<%= link_to 'New Warranty type', new_warranty_type_path %>
+<% end %>
+</div>
+</p>

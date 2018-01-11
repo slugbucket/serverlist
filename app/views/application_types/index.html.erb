@@ -1,0 +1,39 @@
+<h2>Listing application user types</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @application_types %>
+<% if can? :create, AppUserType %>
+<%= link_to 'New application user type', new_application_type_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both"></p>
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+    <th>Name</th>
+    <th></th>
+    <th>Description</th>
+    <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @application_types.each do |application_type| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => application_type, :locals => {:display => application_type.name, :edit_path => edit_application_type_path(application_type)} %>
+    <td><%= application_type.description.html_safe %></td>
+    <%= render :partial => "shared/delete_link", :object => application_type, :locals => {:display => "Delete #{application_type.name}" } %>
+  </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @application_types %>
+<% if can? :create, AppUserType %>
+<%= link_to 'New application user type', new_application_type_path %>
+<% end %>
+</div>
+</p>

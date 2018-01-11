@@ -1,0 +1,46 @@
+<h2>Listing Database replications</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_replications %>
+<% if can? :create, DbReplication %>
+<%= link_to 'New Database replication', new_db_replication_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Db repl name</th>
+	  <th></th>
+      <th>Db repl type</th>
+      <th>Db repl host</th>
+      <th>Description</th>
+      <th>Application</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @db_replications.each do |db_replication| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => db_replication, :locals => {:display => db_replication.name, :edit_path => edit_db_replication_path(db_replication)} %>
+        <td><%= DbReplType.find(db_replication.db_repl_type_id).name %></td>
+        <td><%= DbInstance.find(db_replication.db_repl_host_id).name %></td>
+        <td><%= db_replication.description %></td>
+        <td><%= Application.find(db_replication.application_id).name %></td>
+        <%= render :partial => "shared/delete_link", :object => db_replication, :locals => {:display => "Delete #{db_replication.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_replications %>
+<% if can? :create, DbReplication %>
+<%= link_to 'New Database replication', new_db_replication_path %>
+<% end %>
+</div>
+</p>

@@ -1,0 +1,38 @@
+<h2>Listing Database replication frequencies</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_repl_freqs %>
+<% if can? :create, DbReplFreq %>
+<%= link_to 'New Database replication frequency', new_db_repl_freq_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+      <th></th>
+	  <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @db_repl_freqs.each do |db_repl_freq| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => db_repl_freq, :locals => {:display => db_repl_freq.name, :edit_path => edit_db_repl_freq_path(db_repl_freq)} %>
+        <%= render :partial => "shared/delete_link", :object => db_repl_freq, :locals => {:display => "Delete #{db_repl_freq.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_repl_freqs %>
+<% if can? :create, DbReplFreq %>
+<%= link_to 'New Database replication frequency', new_db_repl_freq_path %>
+<% end %>
+</div>
+</p>

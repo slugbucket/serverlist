@@ -1,0 +1,40 @@
+<%= form_for(@model) do |f| %>
+  <% if @model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@model.errors.count, "error") %> prohibited this model from being saved:</h2>
+
+      <ul>
+      <% @model.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 80%;">
+    <fieldset><legend>Model details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+  <div class="field" style="float: left;">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "serverlist" %>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="field" style="float: left;">
+  	<%= f.label :vendor_id %><br />
+    <%= f.collection_select :vendor_id, Vendor.order(:name), :id, :name, {:selected => @model.vendor_id, :prompt => 'Vendor', :class => "serverlist"} %>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  
+    </fieldset>
+    </div>
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

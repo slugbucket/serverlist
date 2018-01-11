@@ -1,0 +1,19 @@
+<p>
+  <strong>Name:</strong>
+  <%= @vendor.name %>
+</p>
+
+<p>
+  <strong>Telephone:</strong>
+  <%= @vendor.telephone %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @vendor.description.html_safe %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_vendor_path(@vendor) %> |
+<%= link_to 'Back', vendors_path %>
+</div>

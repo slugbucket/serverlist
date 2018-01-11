@@ -1,0 +1,25 @@
+---
+- !ruby/object:Session
+  attributes:
+   id: 1
+   username: jrawcliffe
+   sign_in_count: 1
+   current_sign_in_at: 2014-08-01 09:32:24
+   last_sign_in_at: 2014-08-01 09:32:24
+   current_sign_in_ip: 127.0.0.1
+   last_sign_in_ip: 127.0.0.1
+   remember_created_at: 2014-08-01 09:32:24
+   created_at: 2014-08-01 09:32:24
+   updated_at: 2014-08-01 09:32:24
+- !ruby/object:Session
+  attributes:
+   id: 2
+   username: sscope.staff
+   sign_in_count: 1
+   current_sign_in_at: 2014-08-04 11:32:24
+   last_sign_in_at: 2014-08-04 11:32:24
+   current_sign_in_ip: 127.0.0.1
+   last_sign_in_ip: 127.0.0.1
+   remember_created_at: 2014-08-04 11:32:24
+   created_at: 2014-08-01 09:32:24
+   updated_at: 2014-08-01 09:32:24

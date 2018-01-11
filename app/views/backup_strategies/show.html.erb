@@ -1,0 +1,14 @@
+<p>
+  <strong>Name:</strong>
+  <%= @backup_strategy.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @backup_strategy.description.html_safe %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_backup_strategy_path(@backup_strategy) %> |
+<%= link_to 'Back', backup_strategies_path %>
+</div>

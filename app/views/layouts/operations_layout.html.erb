@@ -1,0 +1,30 @@
+<%= render :partial => 'shared/header_banner' %>
+  <div id="search">
+    <!-- %= render :partial => 'shared/search' % -->
+  </div> <!-- search -->
+  <div style="clear: both;"></div>
+  <div id="nav">
+    <ul class="navbar">
+      <%= render :partial => 'shared/navbar' %>
+      <%= render :partial => 'shared/login' %>
+    </ul>
+  </div> <!-- id=nav -->
+    <div id="opssubmenu">
+	<ul class="opssubmenubar">
+        <% if can? :edit, ImpactLevel %><li><%= link_to "Impact levels", "/impact_levels" %></li><% end %>
+	<% if can? :edit, ImpactHour %><li><%= link_to "Impact hours", "/impact_hours" %></li><% end %>
+	<% if can? :edit, OperationLevel %><li><%= link_to "Operation levels", "/operation_levels" %></li><% end %>
+	<% if can? :edit, OperationStatus %><li><%= link_to "Operation status", "/operation_statuses" %></li><% end %>
+	<% if can? :edit, ServiceLevel %><li><%= link_to "Service level", "/service_levels" %></li><% end %>
+	<% if can? :edit, EscalationLevel %><li><%= link_to "Escalation level", "/escalation_levels" %></li><% end %>
+        <% if can? :edit, DrShutdownStage %><li><%= link_to "Shutdown stage", "/dr_shutdown_stages" %></li><% end %>
+	</ul>
+  </div>
+</div> <!-- banner -->
+<div style="padding-top: 25px"><!-- yielded content area -->
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
+<%= yield %>
+</div><!-- yielded content area -->
+<p>
+<%= render :partial => 'shared/footer' %>

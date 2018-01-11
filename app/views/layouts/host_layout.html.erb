@@ -1,0 +1,33 @@
+<%= render :partial => 'shared/header_banner' %>
+  <div style="clear: both;"></div>
+  <div id="nav">
+    <ul class="navbar">
+      <%= render :partial => 'shared/navbar' %>
+      <%= render :partial => 'shared/login' %>
+  
+    </ul>
+    
+  </div><!-- id=nav -->
+    <div id="hostsubmenu">
+	<ul class="hostsubmenubar">
+        <% if can? :edit, Location %><li><%= link_to "Datacentres", "/locations" %></li><% end %>
+        <% if can? :edit, Host %><li><%= link_to "Hosts", "/hosts" %></li><% end %>
+	<% if can? :edit, Model %><li><%= link_to "Models", "/models" %></li><% end %>
+	<% if can? :edit, BackupStrategy %><li><%= link_to "Backups", "/backup_strategies" %></li><% end %>	
+        <% if can? :edit, AdDomain %><li><%= link_to "AD domains", "/ad_domains" %></li><% end %>
+	<% if can? :edit, OperatingSystem %><li><%= link_to "Operating systems", "/operating_systems" %></li><% end %>
+	<% if can? :edit, OobRemoteMngmt %><li><%= link_to "OOB mgmnt", "/oob_remote_mngmts" %></li><% end %>
+        <% if can? :edit, DrMethod %><li><%= link_to "DR methods", "/dr_methods" %></li><% end %>
+	</ul>
+  </div>
+  <div id="searchpane">
+    <%= render :partial => 'shared/search' %><%= render :partial => 'hosts/by_location'  %>
+  </div> <!-- search -->
+</div> <!-- banner -->
+<div style="padding-top: 25px"><!-- yielded content area -->
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
+<%= yield %>
+</div><!-- yielded content area -->
+<p>
+<%= render :partial => 'shared/footer' %>

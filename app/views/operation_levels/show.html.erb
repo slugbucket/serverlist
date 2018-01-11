@@ -1,0 +1,14 @@
+<p>
+  <strong>Name:</strong>
+  <%= @operation_level.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @operation_level.description %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_operation_level_path(@operation_level) %> |
+<%= link_to 'Back', operation_levels_path %>
+</div>

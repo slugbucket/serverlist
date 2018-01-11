@@ -1,0 +1,38 @@
+<h2>Listing Escalation levels</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @escalation_levels %>
+<% if can? :create, EscalationLevel %>
+<%= link_to 'New Escalation level', new_escalation_level_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+      <th></th>
+	  <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @escalation_levels.each do |escalation_level| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => escalation_level, :locals => {:display => escalation_level.name, :edit_path => edit_escalation_level_path(escalation_level)} %>
+     <%= render :partial => "shared/delete_link", :object => escalation_level, :locals => {:display => "Delete #{escalation_level.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @escalation_levels %>
+<% if can? :create, EscalationLevel %>
+<%= link_to 'New Escalation level', new_escalation_level_path %>
+<% end %>
+</div>
+</p>

@@ -1,0 +1,44 @@
+<%= form_for(@server_app) do |f| %>
+  <% if @server_app.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@server_app.errors.count, "error") %> prohibited this server_app from being saved:</h2>
+
+      <ul>
+      <% @server_app.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 80%;">
+    <fieldset><legend>Server application details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+  <div class="field" style="float: left;">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "serverlist" %>
+  </div>
+  <div class="field">
+    <%= f.label :warranty_contract_id %><br />
+    <%= f.collection_select :vendor_id, WarrantyContract.order(:name), :id, :name, {:selected => @server_app.warranty_contract_id, :prompt => 'Warranty contract', :class => "serverlist"} %>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="field">
+    <%= f.label :vendor_id %><br />
+    <%= f.collection_select :vendor_id, Vendor.order(:name), :id, :name, {:selected => @server_app.vendor_id, :prompt => 'Vendor', :class => "serverlist"} %>
+  </div>
+  
+  <div style="clear: both;"></div>
+    <div class="field" style="float: left;">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, :rows => 6, :cols => 40, :class => "mceEditor" %>
+    </div>
+    </fieldset>
+    </div>
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

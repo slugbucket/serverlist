@@ -1,0 +1,50 @@
+<h2>Listing certs</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @certs %>
+<% if can? :create, Cert %>
+<%= link_to 'New certificate', new_cert_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+      <th></th>
+      <th>Cert type</th>
+          <th>Description</th>
+		        <th>Vendor</th>
+      <th>Expiry</th>
+      <th>Application</th>
+    <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @certs.each do |cert| %>
+      <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => cert, :locals => {:display => cert.name, :edit_path => edit_cert_path(cert)} %>
+        <td><%= CertType.find(cert.cert_type_id).name %></td>
+        <td><%= cert.description.html_safe %></td>
+        <td><%= Vendor.find(cert.vendor_id).name %></td>
+        <td><%= cert.expiry.to_s(:my_date) %></td>
+        <td><%= Application.where(cert.application_id).name %></td>
+        <%= render :partial => "shared/delete_link", :object => cert, :locals => {:display => "Delete #{cert.name}" } %>      </tr>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @certs %>
+<% if can? :create, Cert %>
+<%= link_to 'New certificate', new_cert_path %>
+<% end %>
+</div>
+</p>

@@ -1,0 +1,38 @@
+<h2>Listing Database replication statuses</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_repl_statuses %>
+<% if can? :create, DbReplStatus %>
+<%= link_to 'New Database replication status', new_db_repl_status_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+      <th></th>
+	  <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @db_repl_statuses.each do |db_repl_status| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => db_repl_status, :locals => {:display => db_repl_status.name, :edit_path => edit_db_repl_status_path(db_repl_status)} %>
+        <%= render :partial => "shared/delete_link", :object => db_repl_status, :locals => {:display => "Delete #{db_repl_status.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_repl_statuses %>
+<% if can? :create, DbReplStatus %>
+<%= link_to 'New Database replication status', new_db_repl_status_path %>
+<% end %>
+</div>
+</p>

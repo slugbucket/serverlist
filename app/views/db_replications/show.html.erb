@@ -1,0 +1,49 @@
+<p>
+  <strong>Db repl name:</strong>
+  <%= @db_replication.name %>
+</p>
+
+<p>
+  <strong>Db repl type:</strong>
+  <%= DbReplType.find(@db_replication.db_repl_type_id).name %>
+</p>
+
+<p>
+  <strong>Db repl host:</strong>
+  <%= DbInstance.find(@db_replication.db_repl_host_id).name %>
+</p>
+
+<p>
+  <strong>Db repl src:</strong>
+  <%= DbInstanceDbName.find(@db_replication.db_repl_src_id).db_inst_name %>
+</p>
+
+<p>
+  <strong>Db repl target:</strong>
+  <%= DbInstanceDbName.find(@db_replication.db_repl_target_id).db_inst_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @db_replication.description.html_safe %>
+</p>
+
+<p>
+  <strong>Db repl status:</strong>
+  <%= DbReplStatus.find(@db_replication.db_repl_status_id).name %>
+</p>
+
+<p>
+  <strong>Db repl freq:</strong>
+  <%= DbReplFreq.find(@db_replication.db_repl_freq_id).name %>
+</p>
+
+<p>
+  <strong>Application:</strong>
+  <%= @db_replication.application_id %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_db_replication_path(@db_replication) %> |
+<%= link_to 'Back', db_replications_path %>
+</div>

@@ -1,0 +1,2 @@
+module EnterpriseApplicationsHelper
+end

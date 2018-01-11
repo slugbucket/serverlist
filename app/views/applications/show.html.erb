@@ -1,0 +1,58 @@
+<p>
+  <strong>Name:</strong>
+  <%= @application.name %>
+</p>
+
+<p>
+  <strong>Application type:</strong>
+  <%= ApplicationType.getname(@application.application_type_id) %>
+</p>
+
+<p>
+  <strong>Application status:</strong>
+  <%= ApplicationStatus.getname(@application.application_status_id) %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= Vendor.getname(@application.vendor_id) %>
+</p>
+
+<p>
+  <strong>Support contact:</strong>
+  <%= SupportContact.getname(@application.support_contact_id) %>
+</p>
+
+<p>
+  <strong>Support group:</strong>
+  <%= SupportGroup.getname(@application.support_group_id) %>
+</p>
+
+<p>
+  <strong>Escalation level:</strong>
+  <%= EscalationLevel.getname(@application.escalation_level_id) %>
+</p>
+
+<p>
+  <strong>Impact hour:</strong>
+  <%= ImpactHour.getname(@application.impact_hour_id) %>
+</p>
+
+<p>
+  <strong>Impact level:</strong>
+  <%= ImpactLevel.getname(@application.impact_level_id) %>
+</p>
+
+<p>
+  <strong>Shutdown stage:</strong>
+  <%= DrShutdownStage.getname(@application.dr_shutdown_stage_id) %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @application.description.html_safe %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_application_path(@application) %> |
+<%= link_to 'Back', applications_path %>
+</div>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 1st Domain
+  description: First Domain
+  active: true
+
+two:
+  name: 2nd domain
+  description: Second domain
+  active: true

@@ -1,0 +1,35 @@
+<%= render :partial => 'shared/header_banner' %>
+  <div id="search">
+    <!-- %= render :partial => 'shared/search' % -->
+  </div> <!-- search -->
+  <div style="clear: both;"></div>
+  <div id="nav">
+    <ul class="navbar">
+      <%= render :partial => 'shared/navbar' %>
+      <%= render :partial => 'shared/login' %>
+    </ul>
+  </div> <!-- id=nav -->
+    <div id="appsubmenu">
+	<ul class="appsubmenubar">
+        <% if can? :edit, Application %><li><%= link_to "Applications", "/applications" %></li><% end %>
+	<% if can? :edit, AppUser %><li><%= link_to "App users", "/app_users" %></li><% end %>
+	<% if can? :edit, AppUserType %><li><%= link_to "App user types", "/app_user_types" %></li><% end %>
+	<% if can? :edit, EnterpriseApplication %><li><%= link_to "Enterprise apps", "/enterprise_applications" %></li><% end %>
+        <% if can? :edit, ServerApp %><li><%= link_to "Server apps", "/server_apps" %></li><% end %>
+	<% if can? :edit, ApplicationStatus %><li><%= link_to "App statuses", "/application_statuses" %></li><% end %>
+	<% if can? :edit, ApplicationType %><li><%= link_to "App types", "/application_types" %></li><% end %>
+	<% if can? :edit, Cert %><li><%= link_to "SSL Cert", "/certs" %></li><% end %>
+        <% if can? :edit, CertType %><li><%= link_to "SSL Cert type", "/cert_types" %></li><% end %>
+	</ul>
+  </div>
+  <div id="searchpane">
+    <%= render :partial => 'shared/search' %>
+  </div> <!-- search -->
+</div> <!-- banner -->
+<div style="padding-top: 25px"><!-- yielded content area -->
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
+<%= yield %>
+</div><!-- yielded content area -->
+<p>
+<%= render :partial => 'shared/footer' %>

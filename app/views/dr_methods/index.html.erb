@@ -1,0 +1,40 @@
+<h2>Listing Disaster recover methods</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @dr_methods %>
+<% if can? :create, DrMethod %>
+<%= link_to 'New Disaster recover methods', new_dr_method_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+      <th></th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dr_methods.each do |dr_method| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => dr_method, :locals => {:display => dr_method.name, :edit_path => edit_dr_method_path(dr_method)} %>
+        <td><%= dr_method.description.html_safe %></td>
+        <%= render :partial => "shared/delete_link", :object => dr_method, :locals => {:display => "Delete #{dr_method.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @dr_methods %>
+<% if can? :create, DrMethod %>
+<%= link_to 'New Disaster recover methods', new_dr_method_path %>
+<% end %>
+</div>
+</p>

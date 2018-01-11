@@ -1,0 +1,40 @@
+<h2>Listing cert_types</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @cert_types %>
+<% if can? :create, CertType %>
+<%= link_to 'New certificate type', new_cert_type_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+    <th></th>
+	<th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cert_types.each do |cert_type| %>
+      <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => cert_type, :locals => {:display => cert_type.name, :edit_path => edit_cert_type_path(cert_type)} %>
+        <%= render :partial => "shared/delete_link", :object => cert_type, :locals => {:display => "Delete #{cert_type.name}" } %>      </tr>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @cert_types %>
+<% if can? :create, CertType %>
+<%= link_to 'New certificate type', new_cert_type_path %>
+<% end %>
+</div>
+</p>

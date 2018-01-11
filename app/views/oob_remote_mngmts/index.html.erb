@@ -1,0 +1,40 @@
+<h2>Listing Out of band management systems</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @oob_remote_mngmts %>
+<% if can? :create, OobRemoteMngmt %>
+<%= link_to 'New Out of band remote management', new_oob_remote_mngmt_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @oob_remote_mngmts.each do |oob_remote_mngmt| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => oob_remote_mngmt, :locals => {:display => oob_remote_mngmt.name, :edit_path => edit_oob_remote_mngmt_path(oob_remote_mngmt)} %>
+        <td><%= oob_remote_mngmt.description %></td>
+        <%= render :partial => "shared/delete_link", :object => oob_remote_mngmt, :locals => {:display => "Delete #{oob_remote_mngmt.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @oob_remote_mngmts %>
+<% if can? :create, OobRemoteMngmt %>
+<%= link_to 'New Out of band remote management', new_oob_remote_mngmt_path %>
+<% end %>
+</div>
+</p>

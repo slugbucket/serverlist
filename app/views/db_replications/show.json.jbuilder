@@ -1,0 +1,1 @@
+json.extract! @db_replication, :id, :db_repl_name, :db_repl_type, :db_repl_host, :db_repl_src, :db_repl_target, :description, :db_repl_status_id, :db_repl_freq_id, :application_id, :created_at, :updated_at

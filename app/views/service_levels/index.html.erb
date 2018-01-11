@@ -1,0 +1,40 @@
+<h2>Listing Service levels</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @service_levels %>
+<% if can? :create, ServiceLevel %>
+<%= link_to 'New Service level', new_service_level_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @service_levels.each do |service_level| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => service_level, :locals => {:display => service_level.name, :edit_path => edit_service_level_path(service_level)} %>
+        <td><%= service_level.description.html_safe %></td>
+        <%= render :partial => "shared/delete_link", :object => service_level, :locals => {:display => "Delete #{service_level.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @service_levels %>
+<% if can? :create, ServiceLevel %>
+<%= link_to 'New Service level', new_service_level_path %>
+<% end %>
+</div>
+</p>

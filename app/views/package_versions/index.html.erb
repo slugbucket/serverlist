@@ -1,0 +1,49 @@
+<h2>Listing Package versions</h2>
+<p>
+It is allowed for there to be multiple packages with the same name, but the package version-package name
+combination must be unique.
+</p>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @package_versions %>
+<% if can? :create, PackageVersion %>
+<%= link_to 'New PackageVersion', new_package_version_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+   <tr class="serverlist">
+         <th>Name</th>
+         <th></th>
+        <th>Package</th>
+        <th>Package architecture</th>
+        <th></th>
+    <% if can? :destroy, PackageVersion %>
+    <th></th>
+    <% end %>
+   </tr>
+  </thead>
+
+  <tbody>
+    <% @package_versions.each do |package_version| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+     <%= render :partial => "shared/edit_link", :object => package_version, :locals => {:display => package_version.name, :edit_path => edit_package_version_path(package_version)} %>
+          <td><%= Package.get_name(package_version.package_id) -%></td>
+          <td><%= PackageArchitecture.get_name(package_version.package_architecture_id) -%></td>
+          <%= render :partial => "shared/delete_link", :object => package_version, :locals => {:display => "Delete #{package_version.name}" } %>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @package_versions %>
+<% if can? :create, PackageVersion %>
+<%= link_to 'New PackageVersion', new_package_version_path %>
+<% end -%>
+</div>
+</p>

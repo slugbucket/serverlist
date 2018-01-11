@@ -1,0 +1,40 @@
+<p>
+  <strong>Name:</strong>
+  <%= @cert.name %>
+</p>
+
+<p>
+  <strong>Cert type:</strong>
+  <%= CertType.find(@cert.cert_type_id).name %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= Vendor.find(@cert.vendor_id).name %>
+</p>
+
+<p>
+  <strong>Expiry:</strong>
+  <%= @cert.expiry.to_s(:my_date) %>
+</p>
+
+
+<p>
+  <strong>Application:</strong>
+<% if(@cert.application_id) %>
+  <%= Application.find(@cert.application_id).name %>
+<% else %>
+  None
+<% end %>
+</p>
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @cert.description.html_safe %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_cert_path(@cert) %> |
+<%= link_to 'Back', certs_path %>
+</div>

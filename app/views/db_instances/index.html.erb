@@ -1,0 +1,45 @@
+<h2>Listing Database instances</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_instances %>  <!-- app_user -->
+<% if can? :create, DbInstance %>
+<%= link_to 'New Database instance', new_db_instance_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Db server</th>
+      <th>Server app</th>
+      <th>Description</th>
+      <th></th>
+    <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @db_instances.each do |db_instance| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => db_instance, :locals => {:display => db_instance.name, :edit_path => edit_db_instance_path(db_instance)} %>
+        <td><%= DbServer.find(db_instance.db_server_id).name %></td>
+        <td><%= ServerApp.find(db_instance.server_app_id).name %></td>
+        <td><%= db_instance.description.html_safe %></td>
+        <%= render :partial => "shared/delete_link", :object => db_instance, :locals => {:display => "Delete #{db_instance.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_instances %>
+<% if can? :create, DbInstance %>
+<%= link_to 'New Database instance', new_db_instance_path %>
+<% end %>
+</div>
+</p>

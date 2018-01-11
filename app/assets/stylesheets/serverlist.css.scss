@@ -1,0 +1,290 @@
+// Place all the styles related to the Tempaccts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#title {
+  padding-left: 1em;
+  float: left;
+}
+#logo {
+  float: left;
+  padding: 8px;
+}
+#heading {
+  float: left;
+}
+#banner {
+  background-color:#fff;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 1.5em;
+  font-weight:bold;
+  text-align: center;
+  width: 100%;
+  height: 95px;
+}
+#footer
+{
+  width: 100%;
+  border-top: 0.1em #606060 solid;
+  color: #000000;
+  font-size: 1.0em;
+  clear: both;
+  padding: 1.0em;
+  text-align: center;
+}
+#mainbody {
+  margin-left: 1.0em;
+  width: 75%;
+}
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+ul.navbar li {
+  float: left;
+}
+ul.navbar li a:link, ul.navbar li a:visited {
+  display: block;
+  //width: 140px;
+  font-weight: bold;
+  color: #606060;
+  background-color:#dee5f0;
+  text-align: center;
+  padding: 2px 10px 2px 10px;
+  text-decoration: none;
+  //text-transform: uppercase;
+  border-right: 1px solid #606060;
+}
+ul.navbar li a:hover, ul.navbar li a:active {
+  background-color: #606060;
+  color: #FFFFFF;
+}
+#nav {
+  background-color: #dee5f0;
+  width: 100%;
+  height: 1.2em;
+}
+input
+{
+  background-color: #fdfac2;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  padding: 0.2em;
+  margin: 0.2em;
+  border-radius: 5px;
+  border: none;
+}
+.field input.serverlist {
+  background-color: #fdfac2;
+  border: #606060 solid 1px;
+}
+input:disabled {
+  background-color :#dee5f0;
+  color: #606060;
+}
+textarea.serverlist
+{
+  background-color: #fdfac2;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  padding: 0.2em;
+  margin: 0.2em;
+  border: 1px solid #003300;
+  border-radius: 5px;
+}
+input.button
+{
+  background-color: #0020d7;
+  color: #FFFFFF;
+  border-radius: 5px;
+  border: none;
+}
+img {
+  border-style: none;
+}
+.serverlist {
+  background: white;
+  cursor: default;
+  /* self-clearing method: */ 
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.0em;
+}
+table.serverlist {
+  width: 100%;
+}
+.serverlist tr {
+  border: none;
+  text-align: left;
+}
+.serverlist th {
+  font-size: 1.0em;
+  font-weight: bold;
+  padding: 0.25em 1.0em 0.25em 0.5em;
+  background-color: #909090;
+  color: #fff;
+}
+.serverlist th a:visited, th a:active {
+  font-size: 1.0em;
+  font-weight: bold;
+  padding: 0.25em 1.0em 0.25em 0.5em;
+  background-color: #909090;
+  color: #fff;
+}
+.serverlist th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+.serverlist th .asc {
+  font-size: 1.0em;
+  font-weight: bold;
+  padding: 0.25em 1.0em 0.25em 0.5em;
+  background-color: #909090;
+  color: #fff;
+  background-image: url('up_arrow.png'); 
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.serverlist th .desc {
+  font-size: 1.0em;
+  font-weight: bold;
+  padding: 0.25em 1.0em 0.25em 0.5em;
+  background-color: #909090;
+  color: #fff;
+  background-image: url('down_arrow.png'); 
+}
+
+.serverlist th a  {
+  font-size: 1.0em;
+  font-weight: bold;
+  padding: 0.25em 1.0em 0.25em 0.5em;
+  background-color: #909090;
+  color: #fff;
+
+}
+.serverlist th a:hover, th a:visited, th a:active  {
+  font-size: 1.0em;
+  font-weight: bold;
+  padding: 0.25em 1.0em 0.25em 0.5em;
+  background-color: #909090;
+  color: #fff;
+}
+.serverlist td {
+  padding: 0.2em 1.0em 0.2em 0.5em; 
+}
+tr.ma_row_dark {
+  background-color: #CCC;
+}
+.serverlist .ma_row_light a {
+  text-decoration: none;
+  background-color: #FFF;
+  color: #0020d7;
+}
+.serverlist .ma_row_dark a {
+  text-decoration: none;
+  background-color: #CCC;
+  color: #0020d7;
+}
+.serverlist a:visited {
+  text-decoration: none;
+}
+.serverlist .ma_row_dark  a:focus, .serverlist .ma_row_dark  a:hover { 
+  text-decoration: underline;
+  background-color: #CCC;
+}
+.serverlist .ma_row_light a:hover, .serverlist .ma_row_light a:focus { 
+  text-decoration: underline;
+  background-color: #fff;
+}
+
+.serverlist a:visited {
+  text-decoration: none;
+  color: #0020d7;
+}
+.serverlist a:focus, .serverlist a:hover { 
+  text-decoration: underline;
+  background-color: #FFF;
+  color: #0020d7;
+}
+.serverlist a { 
+  text-decoration: none;
+  background-color: #fff;
+  color: #0020d7;
+}
+#login {
+  padding: 0.5em;
+  background-color: #dee5f0;
+  font-size: 0.5em;
+  text-align: right;
+  float: right;
+  margin-top: 1.25em;
+}
+#login a {
+  text-decoration: none;
+  color: #0020d7;
+}
+#login a:focus, #login a:hover {
+  text-decoration: underline;
+  background-color: #dee5f0;
+}
+div#findbyname {
+  position:relative;
+  float:left;
+  margin-right:3px;
+  /* font-size: 1.0em; */
+}
+input#findbyname-field
+{
+  border: 1px solid #303030;
+  width: 15em;
+}
+label.overlabel {
+  color:#999;
+  top:3px;
+  left:5px;
+  z-index:1;
+  color:#999;
+}
+
+label.overlabel-apply {
+  position:absolute;
+  top:3px;
+  left:5px;
+  z-index:1;
+  color:#999;
+}
+#searchpane {
+  margin-top: 0.5em;
+  padding: 0.5em;
+  float: right;
+  background: white;
+  width: 40%;
+  cursor: default;
+  /* self-clearing method: */ 
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.5em;
+  border-radius: 5px;
+  border: #606060 solid 1px;
+}
+#searchpane select {
+  color: #606060;
+  background: #ffffff;
+  border: 1px solid #606060;
+  border-radius: 5px;
+}
+#searchpane a {
+  text-decoration: none;
+  color: #0020d7;
+}
+#searchpane a:focus { 
+  text-decoration: underline;
+  background-color: #ffffff;
+}
+#searchpane a:hover { 
+  text-decoration: underline;
+  background-color: #ffffff;
+}

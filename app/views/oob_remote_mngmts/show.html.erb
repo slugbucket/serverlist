@@ -1,0 +1,14 @@
+<p>
+  <strong>Name:</strong>
+  <%= @oob_remote_mngmt.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @oob_remote_mngmt.description %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_oob_remote_mngmt_path(@oob_remote_mngmt) %> |
+<%= link_to 'Back', oob_remote_mngmts_path %>
+</div>

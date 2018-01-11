@@ -1,0 +1,38 @@
+<h2>Listing Database clusters</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_clusters %>  <!-- app_user -->
+<% if can? :create, DbCluster %>
+<%= link_to 'New Database cluster', new_db_cluster_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+      <th></th>
+	  <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @db_clusters.each do |db_cluster| %>
+	<tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => db_cluster, :locals => {:display => db_cluster.name, :edit_path => edit_db_cluster_path(db_cluster)} %>
+    <%= render :partial => "shared/delete_link", :object => db_cluster, :locals => {:display => "Delete #{db_cluster.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_clusters %>
+<% if can? :create, DbCluster %>
+<%= link_to 'New Database cluster', new_db_cluster_path %>
+<% end %>
+</div>
+</p>

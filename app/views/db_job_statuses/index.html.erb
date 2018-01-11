@@ -1,0 +1,38 @@
+<h2>Listing Database job statuses</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_job_statuses %>  <!-- app_user -->
+<% if can? :create, DbJobStatus %>
+<%= link_to 'New Database job status', new_db_job_status_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+      <th></th>
+    <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @db_job_statuses.each do |db_job_status| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => db_job_status, :locals => {:display => db_job_status.name, :edit_path => edit_db_job_status_path(db_job_status)} %>
+        <%= render :partial => "shared/delete_link", :object => db_job_status, :locals => {:display => "Delete #{db_job_status.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_job_statuses %>
+<% if can? :create, DbJobStatus %>
+<%= link_to 'New Database job status', new_db_job_status_path %>
+<% end %>
+</div>
+</p>

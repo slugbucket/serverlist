@@ -1,0 +1,40 @@
+<h2>Listing Operation levels</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @operation_levels %>
+<% if can? :create, OperationLevel %>
+<%= link_to 'New Operation level', new_operation_level_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operation_levels.each do |operation_level| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => operation_level, :locals => {:display => operation_level.name, :edit_path => edit_operation_level_path(operation_level)} %>
+        <td><%= operation_level.description %></td>
+        <%= render :partial => "shared/delete_link", :object => operation_level, :locals => {:display => "Delete #{operation_level.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @operation_levels %>
+<% if can? :create, OperationLevel %>
+<%= link_to 'New Operation level', new_operation_level_path %>
+<% end %>
+</div>
+</p>

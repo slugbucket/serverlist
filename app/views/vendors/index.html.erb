@@ -1,0 +1,40 @@
+<h2>Listing Vendors</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @vendors %>
+<% if can? :create, Vendor %>
+<%= link_to 'New Vendor', new_vendor_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vendors.each do |vendor| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => vendor, :locals => {:display => vendor.name, :edit_path => edit_vendor_path(vendor)} %>
+        <td><%= vendor.description %></td>
+        <%= render :partial => "shared/delete_link", :object => vendor, :locals => {:display => "Delete #{vendor.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @vendors %>
+<% if can? :create, Vendor %>
+<%= link_to 'New Vendor', new_vendor_path %>
+<% end %>
+</div>
+</p>

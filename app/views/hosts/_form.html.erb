@@ -1,0 +1,100 @@
+<%= form_for(@host) do |f| %>
+  <% if @host.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@host.errors.count, "error") %> prohibited this host from being saved:</h2>
+
+      <ul>
+      <% @host.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 80%;">
+    <fieldset><legend>Host details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+  <div class="field" style="float: left;">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "serverlist" %>
+  </div>
+  <div class="field" style="float: left;">
+    <%= f.label :active %><br>
+    <%= f.check_box :active, :class => "serverlist" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :operating_system_id %><br>
+    <%= f.collection_select :operating_system_id, OperatingSystem.order(:name), :id, :name, {:selected => @host.operating_system_id, :prompt => 'Operating system', :class => "serverlist"} %>
+  </div>
+  <div style="clear: both;"></div>
+
+  <div class="field" style="float: left;">
+    <%= f.label :location_id %><br>
+    <%= f.collection_select :location_id, Location.order(:name), :id, :name, {:selected => @host.location_id, :prompt => 'Location', :class => "serverlist"} %>
+  </div>
+
+  <div class="field" style="float: left;">
+    <%= f.label :service_level_id %><br>
+    <%= f.collection_select :service_level_id, ServiceLevel.order(:name), :id, :name, {:selected => @host.service_level_id, :prompt => 'Service level', :class => "serverlist"} %>
+  </div>
+  <div class="field">
+    <%= f.label :dr_method_id %><br>
+    <%= f.collection_select :dr_method_id, DrMethod.order(:name), :id, :name, {:selected => @host.dr_method_id, :prompt => 'DR method', :class => "serverlist"} %>
+  </div>
+  <div style="clear: both;"></div>
+
+  <div class="field">
+    <%= f.label :primary_use %><br>
+    <%= f.text_area :primary_use, :rows => 6, :cols => 60, :class => "mceEditor" %>
+  </div>
+  
+  <div style="clear: both;"></div>
+
+  <div class="field" style="float: left;">
+    <%= f.label :model_id %><br>
+    <%= f.collection_select :model_id, Model.order(:name), :id, :name, {:selected => @host.model_id, :prompt => 'Model', :class => "serverlist"} %>
+  </div>
+  <div class="field">
+    <%= f.label :oob_remote_mngmt_id, "Out of band control" %><br>
+    <%= f.collection_select :oob_remote_mngmt_id, OobRemoteMngmt.order(:name), :id, :name, {:selected => @host.oob_remote_mngmt_id, :prompt => 'OOB type', :class => "serverlist"} %>
+  </div>
+  <div style="clear: both;"></div>
+  
+  <div class="field" style="float: left;">
+    <%= f.label :serialnum %><br>
+    <%= f.text_field :serialnum, :class => "serverlist" %>
+  </div>
+  <div class="field" style="float: left;">
+    <%= f.label :asset_tag %><br>
+    <%= f.text_field :asset_tag, :class => "serverlist" %>
+  </div>
+  <div class="field">
+    <%= f.label :ad_domain_id, "AD Domain" %><br>
+    <%= f.collection_select :ad_domain_id, AdDomain.order(:name), :id, :name, {:selected => @host.ad_domain_id, :prompt => 'AD Domain', :class => "serverlist"} %>
+  </div>
+  <div style="clear: both;"></div>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, :rows => 6, :cols => 60, :class => "mceEditor" %>
+  </div>
+  <div class="field">
+    <%= f.label :warranty, "Support and maintenance notes" %><br>
+    <%= f.text_area :warranty, :rows => 6, :cols => 60, :class => "mceEditor" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :commissioned %><br>
+    <%= f.date_select :commissioned %>
+  </div>
+
+    </fieldset>
+    </div>
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

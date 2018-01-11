@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @db_cluster.name %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_db_cluster_path(@db_cluster) %> |
+<%= link_to 'Back', db_clusters_path %>
+</div>

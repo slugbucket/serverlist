@@ -1,0 +1,45 @@
+<h2>Listing applications</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @applications %>
+<% if can? :create, Application %>
+<%= link_to 'New application', new_application_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both"></p>
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+    <th>Name</th>
+    <th></th>
+	<th>Type</th>
+	<th>Status</th>
+	<th>Vendor</th>
+    <th>Description</th>
+    <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @applications.each do |application| %>
+      <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => application, :locals => {:display => application.name, :edit_path => edit_application_path(application)} %>
+        <td><%= ApplicationType.find(application.application_type_id).name %></td>
+        <td><%= ApplicationStatus.find(application.application_status_id).name %></td>
+        <td><%= Vendor.find(application.vendor_id).name %></td>
+        <td><%= application.description.html_safe %></td>
+        <%= render :partial => "shared/delete_link", :object => application, :locals => {:display => "Delete #{application.name}" } %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @applications %>
+<% if can? :create, Application %>
+<%= link_to 'New application', new_application_path %>
+<% end %>
+</div>
+</p>

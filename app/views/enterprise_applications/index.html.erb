@@ -1,0 +1,40 @@
+<h2>Listing Enterprise applications</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @enterprise_applications %>
+<% if can? :create, EnterpriseApplication %>
+<%= link_to 'New Enterprise application', new_enterprise_application_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enterprise_applications.each do |enterprise_application| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => enterprise_application, :locals => {:display => enterprise_application.name, :edit_path => edit_enterprise_application_path(enterprise_application)} %>
+        <td><%= enterprise_application.description.html_safe %></td>
+        <%= render :partial => "shared/delete_link", :object => enterprise_application, :locals => {:display => "Delete #{enterprise_application.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @enterprise_applications %>
+<% if can? :create, EnterpriseApplication %>
+<%= link_to 'New Enterprise application', new_enterprise_application_path %>
+<% end %>
+</div>
+</p>

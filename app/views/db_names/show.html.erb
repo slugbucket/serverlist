@@ -1,0 +1,14 @@
+<p>
+  <strong>Name:</strong>
+  <%= @db_name.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @db_name.description %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_db_name_path(@db_name) %> |
+<%= link_to 'Back', db_names_path %>
+</div>

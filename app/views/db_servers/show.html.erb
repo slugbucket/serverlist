@@ -1,0 +1,32 @@
+<p>
+  <strong>Name:</strong>
+  <%= @db_server.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @db_server.description %>
+</p>
+
+<% if @db_server.host_ids %>
+<p>
+  <strong>Hosts:</strong>
+  <ul>
+  <% @db_server.host_ids.map.each do |h| %>
+   <li><%= Host.find(h).name %></li>
+  </ul>
+  <% end %>
+</p>
+<% end %>
+
+<% if @db_server.db_cluster_id %>
+<p>
+  <strong>Db cluster:</strong>
+  <%= DbCluster.getname(@db_server.db_cluster_id) %>
+</p>
+<% end %>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_db_server_path(@db_server) %> |
+<%= link_to 'Back', db_servers_path %>
+</div>

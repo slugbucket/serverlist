@@ -1,0 +1,37 @@
+<h2>Listing application statuses</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @application_statuses %>
+<% if can? :create, ApplicationStatus %>
+<%= link_to 'New application status', new_application_status_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both"></p>
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @application_statuses.each do |application_status| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => application_status, :locals => {:display => application_status.name, :edit_path => edit_application_status_path(application_status)} %>
+    <%= render :partial => "shared/delete_link", :object => application_status, :locals => {:display => "Delete #{application_status.name}" } %>
+  </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @Application_statuss %>
+<% if can? :create, ApplicationStatus %>
+<%= link_to 'New application status', new_application_status_path %>
+<% end %>
+</div>
+</p>

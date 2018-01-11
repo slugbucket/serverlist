@@ -1,0 +1,40 @@
+<%= render :partial => 'shared/header_banner' %>
+  <div id="search">
+    <!-- %= render :partial => 'shared/search' % -->
+  </div> <!-- search -->
+  <div style="clear: both;"></div>
+  <div id="nav">
+    <ul class="navbar">
+      <%= render :partial => 'shared/navbar' %>
+      <%= render :partial => 'shared/login' %>
+    </ul>
+  </div> <!-- id=nav -->
+    <div id="dbsubmenu">
+	<ul class="dbsubmenubar">
+        <% if can? :edit, DbName %><li><%= link_to "DBs", "/db_names" %></li><% end %>
+	<% if can? :edit, DbInstance %><li><%= link_to "Instances", "/db_instances" %></li><% end %>
+	<% if can? :edit, DbServer %><li><%= link_to "Servers", "/db_servers" %></li><% end %>
+	<% if can? :edit, DbScheduledJob %><li><%= link_to "Sched jobs", "/db_scheduled_jobs" %></li><% end %>
+	<% if can? :edit, DbJobType %><li><%= link_to "Job types", "/db_job_types" %></li><% end %>
+	<% if can? :edit, DbJobFreq %><li><%= link_to "Job freqs", "/db_job_freqs" %></li><% end %>
+        <% if can? :edit, DbJobStatus %><li><%= link_to "Job status", "/db_job_statuses" %></li><% end %>
+        <% if can? :edit, DbReplication %><li><%= link_to "Replications", "/db_replications" %></li><% end %>
+	<% if can? :edit, DbReplType %><li><%= link_to "Repl types", "/db_repl_types" %></li><% end %>
+	<% if can? :edit, DbReplFreq %><li><%= link_to "Repl freqs", "/db_repl_freqs" %></li><% end %>
+        <% if can? :edit, DbReplStatus %><li><%= link_to "Repl status", "/db_repl_statuses" %></li><% end %>
+        <% if can? :edit, DbPackage %><li><%= link_to "Packages", "/db_packages" %></li><% end %>
+	<% if can? :edit, DbPackageType %><li><%= link_to "Package types", "/db_package_types" %></li><% end %>
+	<% if can? :edit, DbServer %><li><%= link_to "Clusters", "/db_clusters" %></li><% end %>
+	</ul>
+  </div>
+  <div id="searchpane">
+    <%= render :partial => 'shared/search' %>
+  </div> <!-- search -->
+</div> <!-- banner -->
+<div style="padding-top: 25px"><!-- yielded content area -->
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
+<%= yield %>
+</div><!-- yielded content area -->
+<p>
+<%= render :partial => 'shared/footer' %>

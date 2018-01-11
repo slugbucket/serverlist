@@ -1,0 +1,28 @@
+<%= render :partial => 'shared/header_banner' %>
+  <div id="search">
+    <!-- %= render :partial => 'shared/search' % -->
+  </div> <!-- search -->
+  <div style="clear: both;"></div>
+  <div id="nav">
+    <ul class="navbar">
+      <%= render :partial => 'shared/navbar' %>
+      <%= render :partial => 'shared/login' %>
+    </ul>
+  </div> <!-- id=nav -->
+    <div id="supportsubmenu">
+	<ul class="supportsubmenubar">
+        <% if can? :edit, WarrantyContract %><li><%= link_to "Contracts", "/warranty_contracts" %></li><% end %>
+	<% if can? :edit, WarrantyType %><li><%= link_to "Contract types", "/warranty_types" %></li><% end %>
+	<% if can? :edit, SupportContact %><li><%= link_to "Support contact", "/support_contacts" %></li><% end %>
+	<% if can? :edit, SupportGroup %><li><%= link_to "Support groups", "/support_groups" %></li><% end %>
+	<% if can? :edit, Vendor %><li><%= link_to "Vendors", "/vendors" %></li><% end %>
+	</ul>
+  </div>
+</div> <!-- banner -->
+<div style="padding-top: 25px"><!-- yielded content area -->
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
+<%= yield %>
+</div><!-- yielded content area -->
+<p>
+<%= render :partial => 'shared/footer' %>

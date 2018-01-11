@@ -1,0 +1,9 @@
+<p>
+  <strong>Name:</strong>
+  <%= @application_status.name %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_application_status_path(@application_status) %> |
+<%= link_to 'Back', application_statuses_path %>
+</div>

@@ -1,0 +1,29 @@
+<p>
+  <strong>Name:</strong>
+  <%= @db_package.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @db_package.description %>
+</p>
+
+<p>
+  <strong>Db package type:</strong>
+  <%= @db_package.db_package_type_id %>
+</p>
+
+<p>
+  <strong>Db instance:</strong>
+  <%= @db_package.db_instance_id %>
+</p>
+
+<p>
+  <strong>Db instance db name:</strong>
+  <%= DbInstanceDbName.find(@db_package.db_instance_db_name_id).db_inst_name %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_db_package_path(@db_package) %> |
+<%= link_to 'Back', db_packages_path %>
+</div>

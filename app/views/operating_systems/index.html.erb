@@ -1,0 +1,42 @@
+<h2>Listing Operating systems</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @operating_systems %>
+<% if can? :create, OperatingSystem %>
+<%= link_to 'New Operating system', new_operating_system_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th>Expiry</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operating_systems.each do |operating_system| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => operating_system, :locals => {:display => operating_system.name, :edit_path => edit_operating_system_path(operating_system)} %>
+        <td><%= operating_system.description %></td>
+        <td><%= operating_system.expiry %></td>
+        <%= render :partial => "shared/delete_link", :object => operating_system, :locals => {:display => "Delete #{operating_system.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @operating_systems %>
+<% if can? :create, OperatingSystem %>
+<%= link_to 'New Operating system', new_operating_system_path %>
+<% end %>
+</div>
+</p>

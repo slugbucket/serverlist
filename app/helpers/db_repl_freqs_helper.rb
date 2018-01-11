@@ -1,0 +1,2 @@
+module DbReplFreqsHelper
+end

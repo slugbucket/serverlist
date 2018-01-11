@@ -1,0 +1,19 @@
+<p>
+  <strong>Name:</strong>
+  <%= @support_contact.name %>
+</p>
+
+<p>
+  <strong>Email addr:</strong>
+  <%= @support_contact.email_addr %>
+</p>
+
+<p>
+  <strong>Telephone:</strong>
+  <%= @support_contact.telephone %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_support_contact_path(@support_contact) %> |
+<%= link_to 'Back', support_contacts_path %>
+</div>

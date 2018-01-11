@@ -1,0 +1,29 @@
+<p>
+  <strong>Name:</strong>
+  <%= @warranty_contract.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @warranty_contract.description.html_safe %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= Vendor.getname(@warranty_contract.vendor_id) %>
+</p>
+
+<p>
+  <strong>Warranty type:</strong>
+  <%= WarrantyType.find(@warranty_contract.warranty_type_id).name %>
+</p>
+
+<p>
+  <strong>Expiry:</strong>
+  <%= @warranty_contract.expiry.to_s(:my_date) %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_warranty_contract_path(@warranty_contract) %> |
+<%= link_to 'Back', warranty_contracts_path %>
+</div>

@@ -1,0 +1,43 @@
+<h2>Listing Packages</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @packages %>
+<% if can? :create, Package %>
+<%= link_to 'New Package', new_package_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+   <tr class="serverlist">
+         <th>Name</th>
+         <th></th>
+        <th>Description</th>
+        <th></th>
+    <% if can? :destroy, Package %>
+    <th></th>
+    <% end %>
+   </tr>
+  </thead>
+
+  <tbody>
+    <% @packages.each do |package| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+     <%= render :partial => "shared/edit_link", :object => package, :locals => {:display => package.name, :edit_path => edit_package_path(package)} %>
+          <td><%= package.description -%></td>
+          <%= render :partial => "shared/delete_link", :object => package, :locals => {:display => "Delete #{package.name}" } %>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @packages %>
+<% if can? :create, Package %>
+<%= link_to 'New Package', new_package_path %>
+<% end -%>
+</div>
+</p>

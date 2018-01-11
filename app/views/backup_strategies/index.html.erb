@@ -1,0 +1,42 @@
+<h2>Listing backup_strategies</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @backup_strategies %>
+<% if can? :create, BackupStrategy %>
+<%= link_to 'New backup strategy', new_backup_strategy_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+          <th>Description</th>
+    <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @backup_strategies.each do |backup_strategy| %>
+      <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => backup_strategy, :locals => {:display => backup_strategy.name, :edit_path => edit_backup_strategy_path(backup_strategy)} %>
+        <td><%= backup_strategy.description %></td>
+        <%= render :partial => "shared/delete_link", :object => backup_strategy, :locals => {:display => "Delete #{backup_strategy.name}" } %>      </tr>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @backup_strategies %>
+<% if can? :create, BackupStrategy %>
+<%= link_to 'New backup strategy', new_backup_strategy_path %>
+<% end %>
+</div>
+</p>

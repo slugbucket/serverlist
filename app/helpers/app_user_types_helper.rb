@@ -1,0 +1,2 @@
+module AppUserTypesHelper
+end

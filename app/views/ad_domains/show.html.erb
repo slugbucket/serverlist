@@ -1,0 +1,14 @@
+<p>
+  <b>Name:</b>
+  <%= @ad_domain.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @ad_domain.description.html_safe %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_ad_domain_path(@ad_domain) %> |
+<%= link_to 'Back', ad_domains_path %>
+</div>

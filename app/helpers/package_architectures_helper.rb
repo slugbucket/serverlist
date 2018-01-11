@@ -1,0 +1,2 @@
+module PackageArchitecturesHelper
+end

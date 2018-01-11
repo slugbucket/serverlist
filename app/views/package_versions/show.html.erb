@@ -1,0 +1,19 @@
+<p>
+  <strong>Name:</strong>
+  <%= @package_version.name %>
+</p>
+
+<p>
+  <strong>Package:</strong>
+  <%= Package.get_name(@package_version.package_id) %>
+</p>
+
+<p>
+  <strong>Package architecture:</strong>
+  <%= PackageArchitecture.get_name(@package_version.package_architecture_id) %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_package_version_path(@package_version) %> |
+<%= link_to 'Back', package_versions_path %>
+</div>

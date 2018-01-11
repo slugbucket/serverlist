@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 1st scheduled job
+  db_instance_db_name_id: 1
+  db_job_type_id: 1
+  db_job_host_id: 1
+  description: First scheduled job
+  db_job_status_id: 1
+  db_job_freq_id: 1
+  app_user_id: 1
+  application_id: 1
+
+two:
+  name: 2nd scheduled job
+  db_instance_db_name_id: 1
+  db_job_type_id: 1
+  db_job_host_id: 1
+  description: Second scheduled job
+  db_job_status_id: 1
+  db_job_freq_id: 1
+  app_user_id: 1
+  application_id: 1

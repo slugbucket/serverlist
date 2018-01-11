@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  vendor_id: 1
+  warranty_contract_id: 1
+
+two:
+  name: MyString
+  description: MyText
+  vendor_id: 1
+  warranty_contract_id: 1

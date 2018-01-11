@@ -1,0 +1,96 @@
+-- Sample queries
+
+-- Query all the packages and their version installed on a given host
+SELECT p1.name AS pkgname, pv1.name AS version 
+FROM hosts h1
+  INNER JOIN host_package_versions hpv1
+    ON h1.id = hpv1.host_id
+  INNER JOIN package_versions pv1
+    ON hpv1.package_version_id = pv1.id
+  INNER JOIN packages p1
+    ON pv1.package_id = p1.id
+WHERE h1.name = 'slphv2tg1eps01'
+ORDER BY pkgname
+;
++--------------------------------+-------------------------------+
+| pkgname                        | version                       |
++--------------------------------+-------------------------------+
+| ...                            | ...                           |
++--------------------------------+-------------------------------+
+52 rows in set (0.01 sec)
+
+-- Find all the hosts with a given package and show the version
+SELECT h1.name AS hostname, pv1.name AS version 
+FROM hosts h1
+  INNER JOIN host_package_versions hpv1
+    ON h1.id = hpv1.host_id
+  INNER JOIN package_versions pv1
+    ON hpv1.package_version_id = pv1.id
+  INNER JOIN packages p1
+    ON pv1.package_id = p1.id
+WHERE p1.name = 'my-package'
+ORDER BY hostname
+;
++-----------------+------------------------------+
+| hostname        | version                      |
++-----------------+------------------------------+
+| ...             | ...                          |
++-----------------+------------------------------+
+11 rows in set (0.01 sec)
+
+
+
+-- Now try to identify the releases associated with the current installed
+-- versions of pckages for a given host.
+SELECT h1.name AS hostname,
+       r1.name AS release_name,
+       p1.name AS pkgname,
+       pv1.name AS version 
+FROM hosts h1
+  INNER JOIN host_package_versions hpv1
+    ON h1.id = hpv1.host_id
+  INNER JOIN package_versions pv1
+    ON hpv1.package_version_id = pv1.id
+  INNER JOIN packages p1
+    ON pv1.package_id = p1.id
+  INNER JOIN package_versions pv2
+    ON p1.id = pv2.package_id
+  INNER JOIN package_version_releases pvr1
+    ON pv2.id = pvr1.package_version_id
+  INNER JOIN releases r1
+    ON pvr1.release_id = r1.id
+WHERE pv1.id = pv2.id
+ORDER BY release_name
+;
++------------------+--------------+--------------------------------------+-------------------------------+
+| hostname         | release_name | pkgname                              | version                       |
++------------------+--------------+--------------------------------------+-------------------------------+
+| ...              | 0.0.0.0      | ...                                  | ...                           |
++------------------+--------------+--------------------------------------+-------------------------------+
+3860 rows in set (0.04 sec)
+
+-- Now we should be able to cross check these results for the listed packages
+-- and versions with the previous two queries.
+
+SELECT h1.name AS hostname,
+       r1.name AS release_name,
+       p1.name AS pkgname,
+       pv1.name AS version 
+FROM locations l1
+  INNER JOIN hosts h1
+    ON l1.id = h1.location_id
+  INNER JOIN host_package_versions hpv1
+    ON h1.id = hpv1.host_id
+  INNER JOIN package_versions pv1
+    ON hpv1.package_version_id = pv1.id
+  INNER JOIN packages p1
+    ON pv1.package_id = p1.id
+  INNER JOIN package_versions pv2
+    ON p1.id = pv2.package_id
+  INNER JOIN package_version_releases pvr1
+    ON pv2.id = pvr1.package_version_id
+  INNER JOIN releases r1
+    ON pvr1.release_id = r1.id
+WHERE pv1.id = pv2.id
+  AND l1.name = 'dc-location'
+ORDER BY release_name;

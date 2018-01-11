@@ -1,0 +1,19 @@
+<p>
+  <strong>Name:</strong>
+  <%= @operating_system.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @operating_system.description %>
+</p>
+
+<p>
+  <strong>Expiry:</strong>
+  <%= @operating_system.expiry %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_operating_system_path(@operating_system) %> |
+<%= link_to 'Back', operating_systems_path %>
+</div>

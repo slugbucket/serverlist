@@ -1,0 +1,28 @@
+<%= form_for(@db_cluster) do |f| %>
+  <% if @db_cluster.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@db_cluster.errors.count, "error") %> prohibited this db_cluster from being saved:</h2>
+
+      <ul>
+      <% @db_cluster.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 80%;">
+    <fieldset><legend>Database cluster details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+  <div class="field" style="float: left;">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :class => "serverlist" %>
+        </div>
+    </fieldset>
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

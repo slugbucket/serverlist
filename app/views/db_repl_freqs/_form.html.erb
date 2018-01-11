@@ -1,0 +1,30 @@
+<%= form_for(@db_repl_freq) do |f| %>
+  <% if @db_repl_freq.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@db_repl_freq.errors.count, "error") %> prohibited this db_repl_freq from being saved:</h2>
+
+      <ul>
+      <% @db_repl_freq.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 80%;">
+    <fieldset><legend>Database replication frequency details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+  <div class="field" style="float: left;">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "serverlist" %>
+  </div>
+
+      </div>
+    </fieldset>
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

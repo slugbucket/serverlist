@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  db_server_id: 1
+  server_app_id: 1
+  description: MyText
+
+two:
+  name: MyString
+  db_server_id: 1
+  server_app_id: 1
+  description: MyText

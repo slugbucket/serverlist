@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: istapplist
+  app_user_type_id: 1
+  description: Database user for the istapplist website
+
+two:
+  name: phonebook
+  app_user_type_id: 1
+  description: Database user for the istapplist website

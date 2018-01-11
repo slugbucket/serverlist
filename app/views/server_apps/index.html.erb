@@ -1,0 +1,42 @@
+<h2>Listing Server apps</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @server_apps %>
+<% if can? :create, ServerApp %>
+<%= link_to 'New Server app', new_server_app_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th>Vendor</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @server_apps.each do |server_app| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => server_app, :locals => {:display => server_app.name, :edit_path => edit_server_app_path(server_app)} %>
+        <td><%= server_app.description.html_safe %></td>
+        <td><%= Vendor.find(server_app.vendor_id).name %></td>
+        <%= render :partial => "shared/delete_link", :object => server_app, :locals => {:display => "Delete #{server_app.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @server_apps %>
+<% if can? :create, ServerApp %>
+<%= link_to 'New Server app', new_server_app_path %>
+<% end %>
+</div>
+</p>

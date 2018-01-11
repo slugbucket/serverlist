@@ -1,0 +1,42 @@
+<h2>Listing models</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @models %>
+<% if can? :create, Model %>
+<%= link_to 'New Model', new_model_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+      <th></th>
+      <th>Description</th>
+      <th>Vendor</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @models.each do |model| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => model, :locals => {:display => model.name, :edit_path => edit_model_path(model)} %>
+        <td><%= model.description %></td>
+        <td><%= Vendor.getname( model.vendor_id ) %></td>
+        <%= render :partial => "shared/delete_link", :object => model, :locals => {:display => "Delete #{model.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @models %>
+<% if can? :create, Model %>
+<%= link_to 'New Model', new_model_path %>
+<% end %>
+</div>
+</p>

@@ -1,0 +1,30 @@
+<%= form_for(@application_status) do |f| %>
+  <% if @application_status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@application_status.errors.count, "error") %> prohibited this application_status from being saved:</h2>
+
+      <ul>
+      <% @application_status.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 60%;">
+    <fieldset><legend>Application status details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+        <div class="field" style="float: left;">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "serverlist" %>
+	</div>
+    </div>
+    </fieldset>
+	</div>
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

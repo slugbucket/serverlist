@@ -1,0 +1,14 @@
+<p>
+  <strong>Name:</strong>
+  <%= @dr_shutdown_stage.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @dr_shutdown_stage.description.html_safe %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_dr_shutdown_stage_path(@dr_shutdown_stage) %> |
+<%= link_to 'Back', dr_shutdown_stages_path %>
+</div>

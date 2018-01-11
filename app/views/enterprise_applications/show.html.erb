@@ -1,0 +1,14 @@
+<p>
+  <strong>Name:</strong>
+  <%= @enterprise_application.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @enterprise_application.description %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_enterprise_application_path(@enterprise_application) %> |
+<%= link_to 'Back', enterprise_applications_path %>
+</div>

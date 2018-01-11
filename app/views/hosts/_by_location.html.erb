@@ -1,0 +1,4 @@
+<%= form_tag "/hosts", :method => "GET", :authenticity_token => false do %>
+<%= select(nil, "location", options_from_collection_for_select(Location.order(:name), :id, :name, selected: session[:host_location]), {:prompt => "Datacenter"}) %>
+<%= submit_tag "Go", :name => nil, :class => "button"  %>
+<% end %>

@@ -1,0 +1,44 @@
+<h2>Listing Database packages</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_packages %>
+<% if can? :create, DbPackage %>
+<%= link_to 'New Database package', new_db_package_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th>Package type</th>
+      <th>Instance/name</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @db_packages.each do |db_package| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => db_package, :locals => {:display => db_package.name, :edit_path => edit_db_package_path(db_package)} %>
+        <td><%= db_package.description.html_safe %></td>
+        <td><%= DbPackageType.find(db_package.db_package_type_id).name %></td>
+        <td><%= DbInstanceDbName.find(db_package.db_instance_db_name_id).db_inst_name %></td>
+        <%= render :partial => "shared/delete_link", :object => db_package, :locals => {:display => "Delete #{db_package.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_packages %>
+<% if can? :create, DbPackage %>
+<%= link_to 'New Database package', new_db_package_path %>
+<% end %>
+</div>
+</p>

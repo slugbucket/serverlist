@@ -1,0 +1,39 @@
+<%= form_for(@app_user) do |f| %>
+  <% if @app_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@app_user.errors.count, "error") %> prohibited this app_user from being saved:</h2>
+
+      <ul>
+      <% @app_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 60%;">
+    <fieldset><legend>Application user details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+        <div class="field" style="float: left;">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "serverlist" %>
+	</div>
+	<div class="field">
+    <%= f.label :app_user_type_id %><br />
+	<%= f.collection_select :app_user_type_id, AppUserType.order(:name), :id, :name, {:selected => @app_user.app_user_type_id, :prompt => 'User type'} %><br />
+    <!-- %= f.number_field :app_user_type % -->
+  </div>
+  <div style="clear: both;"></div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 6, :cols => 40, :class => "mceEditor" %>
+  </div>
+      </div>
+    </fieldset>
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

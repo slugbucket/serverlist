@@ -1,0 +1,14 @@
+<p>
+  <strong>Name:</strong>
+  <%= @impact_hour.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @impact_hour.description %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_impact_hour_path(@impact_hour) %> |
+<%= link_to 'Back', impact_hours_path %>
+</div>

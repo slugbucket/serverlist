@@ -1,0 +1,79 @@
+<p>
+  <strong>Name:</strong>
+  <%= @host.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= Location.get_name(@host.location_id) %>
+</p>
+
+<p>
+  <strong>Primary use:</strong>
+  <%= @host.primary_use.html_safe %>
+</p>
+
+<p>
+  <strong>Active Directory domain:</strong>
+  <%= AdDomain.get_name(@host.ad_domain_id) %>
+</p>
+
+<p>
+  <strong>Out of band management:</strong>
+  <%= OobRemoteMngmt.get_name(@host.oob_remote_mngmt_id) %>
+</p>
+
+<p>
+  <strong>Operating system:</strong>
+  <%= OperatingSystem.get_name(@host.operating_system_id) %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= Model.get_name(@host.model_id) %>
+</p>
+
+<p>
+  <strong>Serialnum:</strong>
+  <%= @host.serialnum %>
+</p>
+
+<p>
+  <strong>Asset tag:</strong>
+  <%= @host.asset_tag %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @host.description.html_safe %>
+</p>
+
+<p>
+  <strong>Warranty:</strong>
+  <%= @host.warranty.html_safe %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @host.active %>
+</p>
+
+<p>
+  <strong>Commissioned:</strong>
+  <%= @host.commissioned.to_s(:my_date) %>
+</p>
+
+<p>
+  <strong>Service level:</strong>
+  <%= ServiceLevel.get_name(@host.service_level_id) %>
+</p>
+
+<p>
+  <strong>Dr method:</strong>
+  <%= DrMethod.get_name(@host.dr_method_id) %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_host_path(@host) %> |
+<%= link_to 'Back', hosts_path %>
+</div>

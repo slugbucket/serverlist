@@ -1,0 +1,34 @@
+<%= form_for(@impact_hour) do |f| %>
+  <% if @impact_hour.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@impact_hour.errors.count, "error") %> prohibited this impact_hour from being saved:</h2>
+
+      <ul>
+      <% @impact_hour.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 80%;">
+    <fieldset><legend>Impact hour details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+  <div class="field" style="float: left;">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "serverlist" %>
+    </div>
+  <div style="clear: both;"></div>
+    <div class="field"></div>
+    <%= f.label :description %><br>
+    <%= f.text_area :description, :rows => 6, :cols => 40, :class => "mceEditor" %>
+  </div>
+    </fieldset>
+    </div>
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

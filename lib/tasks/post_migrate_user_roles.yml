@@ -1,0 +1,9 @@
+---
+- !ruby/object:SessionsRoles
+  attributes:
+   user_id: 1
+   session_id: 1
+- !ruby/object:SessionsRoles
+  attributes:
+   user_id: 2
+   session_id: 2

@@ -1,0 +1,2 @@
+module DbJobFreqsHelper
+end

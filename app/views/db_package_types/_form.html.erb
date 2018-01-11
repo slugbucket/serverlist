@@ -1,0 +1,33 @@
+<%= form_for(@db_package_type) do |f| %>
+  <% if @db_package_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@db_package_type.errors.count, "error") %> prohibited this db_package_type from being saved:</h2>
+
+      <ul>
+      <% @db_package_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 80%;">
+    <fieldset><legend>Database package type details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+  <div class="field" style="float: left;">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "serverlist" %>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="field" style="float: left;">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :cols => 40, :rows => 6, :class => "mceEditor" %>
+  </div>
+      </div>
+    </fieldset>
+  <div style="clear: both;"></div>
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

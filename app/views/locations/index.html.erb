@@ -1,0 +1,40 @@
+<h2>Listing datacenters</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @locations %>
+<% if can? :create, Location %>
+<%= link_to 'New Location', new_location_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |location| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => location, :locals => {:display => location.name, :edit_path => edit_location_path(location)} %>
+        <td><%= location.description %></td>
+        <%= render :partial => "shared/delete_link", :object => location, :locals => {:display => "Delete #{location.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @locations %>
+<% if can? :create, Location %>
+<%= link_to 'New Location', new_location_path %>
+<% end %>
+</div>
+</p>

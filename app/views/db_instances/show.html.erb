@@ -1,0 +1,35 @@
+<p>
+  <strong>Name:</strong>
+  <%= @db_instance.name %>
+</p>
+
+<p>
+  <strong>Db server:</strong>
+  <%= DbServer.find(@db_instance.db_server_id).name %>
+</p>
+
+<p>
+  <strong>Server app:</strong>
+  <%= ServerApp.find(@db_instance.server_app_id).name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @db_instance.description.html_safe %>
+</p>
+
+    <% if @db_instance.db_names.any? then %>
+<p>
+  <b>Databases:</b>
+  <ul>
+  <% @db_instance.db_names.map(&:name).each do |d| %>
+   <li><%= "#{d}" %></li>
+  <% end %>
+  </ul>
+</p>
+<% end %>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_db_instance_path(@db_instance) %> |
+<%= link_to 'Back', db_instances_path %>
+</div>

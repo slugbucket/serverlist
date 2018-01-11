@@ -1,0 +1,40 @@
+<h2>Listing Support groups</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @support_groups %>
+<% if can? :create, SupportGroup %>
+<%= link_to 'New Support group', new_support_group_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @support_groups.each do |support_group| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => support_group, :locals => {:display => support_group.name, :edit_path => edit_support_group_path(support_group)} %>
+        <td><%= support_group.description %></td>
+        <%= render :partial => "shared/delete_link", :object => support_group, :locals => {:display => "Delete #{support_group.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @support_groups %>
+<% if can? :create, SupportGroup %>
+<%= link_to 'New Support group', new_support_group_path %>
+<% end %>
+</div>
+</p>

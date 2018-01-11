@@ -1,0 +1,39 @@
+<h2>Listing Disaster recovery shutdown stages</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @dr_shutdown_stages %>
+<% if can? :create, DrShutdownStage %>
+<%= link_to 'New Disaster recovery shutdown stages', new_dr_shutdown_stage_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dr_shutdown_stages.each do |dr_shutdown_stage| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => dr_shutdown_stage, :locals => {:display => dr_shutdown_stage.name, :edit_path => edit_dr_shutdown_stage_path(dr_shutdown_stage)} %>
+        <td><%= dr_shutdown_stage.description %></td>
+        <%= render :partial => "shared/delete_link", :object => dr_shutdown_stage, :locals => {:display => "Delete #{dr_shutdown_stage.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @dr_shutdown_stages %>
+<% if can? :create, DrShutdownStage %>
+<%= link_to 'New Disaster recovery shutdown stages', new_dr_shutdown_stage_path %>
+<% end %>
+</div>
+</p>

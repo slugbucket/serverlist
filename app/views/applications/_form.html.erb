@@ -1,0 +1,111 @@
+<%= form_for(@application) do |f| %>
+  <% if @application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
+
+      <ul>
+      <% @application.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 100%;">
+    <fieldset><legend>Application details</legend>
+
+   <div> <!-- wrapper around account details and help divs -->
+   <div class="field" style="float: left; width: 35%">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "serverlist" %>
+  <br />
+    <%= f.label :application_status_id %><br />
+    <%= f.collection_select :application_status_id, ApplicationStatus.order(:name), :id, :name, {:selected => @application.application_status_id, :prompt => 'Select...', :class => "serverlist"} %>
+  <br />
+    <%= f.label :application_type_id %><br />
+    <%= f.collection_select :application_type_id, ApplicationType.order(:name), :id, :name, {:selected => @application.application_type_id, :prompt => 'Select...', :class => "serverlist"} %>
+    
+  </div>   
+</div>
+
+  
+  <div class="field" style="float: right; width: 65%">
+  
+    <%= f.label :vendor_id %><br />
+    <%= f.collection_select :vendor_id, Vendor.order(:name), :id, :name, {:selected => @application.vendor_id, :prompt => 'Select...', :class => "serverlist"} %>
+    
+  
+  <div style="display: inline; float: left;">
+    <%= f.label :app_host_tokens, "Hosts" %><br />
+    <%= f.text_field :app_host_tokens, {"data-pre" => @application.hosts.map(&:attributes).to_json, :style => "width: 50%"} %>
+  </div>
+    
+  </fieldset>
+  </div>
+  
+  <div style="display: inline; float: left; width: 100%;">
+    <fieldset><legend>Support details</legend>
+      <div> <!-- wrapper around account details and help divs -->
+        <div class="field" style="float: left;">
+    <%= f.label :support_contact_id %><br>
+    <%= f.collection_select :support_contact_id, SupportContact.order(:name), :id, :name, {:selected => @application.support_contact_id, :prompt => 'Select...', :class => "serverlist"} %><br />
+  <br />
+    <%= f.label :support_group_id %><br>
+    <%= f.collection_select :support_group_id, SupportGroup.order(:name), :id, :name, {:selected => @application.support_group_id, :prompt => 'Select...', :class => "serverlist"} %><br />
+  </div>
+  <div class="field" style="float: right; width: 65%">
+    <%= f.label :warranty_contract_tokens, "Warranty contracts" %><br />
+    <%= f.text_field :warranty_contract_tokens, "data-pre" => @application.warranty_contracts.map(&:attributes).to_json %>
+  </div>
+  </fieldset>
+  </div>
+
+  <div style="display: inline; float: left; width: 100%;">
+    <fieldset><legend>Impact and escalation</legend>
+      <div class="field" style="float: left; width: 25%">
+  	<%= f.label :impact_level_id %><br>
+        <%= f.collection_select :impact_level_id, ImpactLevel.order(:name), :id, :name, {:selected => @application.impact_level_id, :prompt => 'Select...', :class => "serverlist"} %>
+      </div>
+      <div class="field" style="float: left; width: 25%">
+        <%= f.label :impact_hour_id %>
+        <%= f.collection_select :impact_hour_id, ImpactHour.order(:name), :id, :name, {:selected => @application.impact_hour_id, :prompt => 'Select...', :class => "serverlist"} %>
+      </div>
+      <div class="field" style="float: left; width: 25%">
+        <%= f.label :escalation_level_id %><br>
+        <%= f.collection_select :escalation_level_id, EscalationLevel.order(:name), :id, :name, {:selected => @application.escalation_level_id, :prompt => 'Select...', :class => "serverlist"} %>
+      </div>
+        <div style="clear: both"></div>
+      <div class="field" style="width: 100%">
+        <%= f.label :dr_shutdown_stage_id, "Shutdown stage" %><br>
+        <%= f.collection_select :dr_shutdown_stage_id, DrShutdownStage.order(:id), :id, :long_name, {:selected => @application.dr_shutdown_stage_id, :prompt => 'Select...', :class => "serverlist"} %>
+      </div>
+    </fieldset>
+  </div>
+
+  <div style="display: inline; float: left; width: 100%;">
+    <fieldset><legend>Database and users</legend>
+      <div class="field" style="float: left; width: 50%">
+          <%= f.label :db_instance_db_name_ids, "Database(s)" %><br />
+          <%= f.collection_select :db_instance_db_name_ids, DbInstanceDbName.order_by_inst_name, :db_inst_id, :db_inst_name, {:selected => @application.db_instance_db_name_ids,:prompt => 'Application databases'}, {:multiple => true, :size => 6} %>
+        </div>
+        <div class="field" style="float: left; width: 50%">
+          <%= f.label :app_user_ids, "Application user(s)" %><br />
+          <%= f.collection_select :app_user_ids, AppUser.order(:name), :id, :app_user_name_type, {:selected => @application.app_user_ids, :prompt => 'Application users'}, {:multiple => true, :size => 6} %>
+      </div>
+    </fieldset>
+  </div>
+  <div style="display: inline; float: left; width: 100%;">
+    <fieldset><legend>Additional information</legend>
+      <div class="field">
+        <%= f.label :description %><br>
+        <%= f.text_area :description, :rows => 6, :cols => 60 %>
+      </div>
+    </fieldset>
+  </div>
+
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

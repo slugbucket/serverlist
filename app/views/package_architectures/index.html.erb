@@ -1,0 +1,48 @@
+<h2>Listing Package architectures</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @package_architectures %>
+<% if can? :create, PackageArchitecture %>
+<%= link_to 'New PackageArchitecture', new_package_architecture_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+    <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th></th>
+      <% if can? :destroy,  PackageArchitecture %>
+      <th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @package_architectures.each do |package_architecture| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => package_architecture, :locals => {:display => package_architecture.name, :edit_path => edit_package_architecture_path(package_architecture)} %>
+          <td>
+  <%= package_architecture.name -%>
+  </td>
+  <td>
+  <%= package_architecture.description -%>
+  </td>
+        <%= render :partial => "shared/delete_link", :object => package_architecture, :locals => {:display => "Delete #{package_architecture.name}" } %>
+        </tr>
+        <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @package_architectures %>
+<% if can? :create, PackageArchitecture %>
+<%= link_to 'New PackageArchitecture', new_package_architecture_path %>
+<% end %>
+</div>
+</p>

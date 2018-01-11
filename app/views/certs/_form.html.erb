@@ -1,0 +1,58 @@
+<%= form_for(@cert) do |f| %>
+  <% if @cert.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cert.errors.count, "error") %> prohibited this cert from being saved:</h2>
+
+      <ul>
+      <% @cert.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 80%;">
+    <fieldset><legend>Certificate details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+  <div class="field" style="float: left;">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "serverlist" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cert_type_id %><br>
+    <%= f.collection_select :cert_type_id, CertType.order(:name), :id, :name, {:selected => @cert.cert_type_id, :prompt => 'Cert type', :class => "serverlist"} %>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="field" style="float: left;">
+    <%= f.label :expiry %><br>
+    <%= f.date_select :expiry, :class => "serverlist"%>
+  </div>
+
+  <div style="clear: both;"></div>
+  <div class="field" style="float: left;">
+    <%= f.label :vendor_id %><br>
+    <%= f.collection_select :vendor_id, Vendor.order(:name), :id, :name, {:selected => @cert.vendor_id, :prompt => 'Choose..'} %>
+  </div>
+    <div style="clear: both;"></div>
+
+  <div class="field">
+    <%= f.label :application_id %><br />
+    <%= f.collection_select :application_id, Application.order(:name), :id, :name, {:selected => @cert.application_id, :prompt => 'Application'} %>
+  </div>
+ 
+  <div style="clear: both;"></div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 6, :cols => 40, :class => "mce_editor" %>
+  </div>
+      </div>
+    </fieldset>
+	</div>
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

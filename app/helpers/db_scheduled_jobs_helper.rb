@@ -1,0 +1,2 @@
+module DbScheduledJobsHelper
+end

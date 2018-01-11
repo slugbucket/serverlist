@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  vendor_id: 1
+  warranty_type_id: 1
+  expiry: 2014-05-12
+
+two:
+  name: MyString
+  description: MyText
+  vendor_id: 1
+  warranty_type_id: 1
+  expiry: 2014-05-12

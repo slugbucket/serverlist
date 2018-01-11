@@ -1,0 +1,49 @@
+<p>
+  <strong>Name:</strong>
+  <%= @db_scheduled_job.name %>
+</p>
+
+<p>
+  <strong>Instance:</strong>
+  <%= DbInstanceDbName.find(@db_scheduled_job.db_instance_db_name_id).db_inst_name %>
+</p>
+
+<p>
+  <strong>Job type:</strong>
+  <%= DbJobType.find(@db_scheduled_job.db_job_type_id).name %>
+</p>
+
+<p>
+  <strong>Job host:</strong>
+  <%= DbInstance.find(@db_scheduled_job.db_job_host_id).name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @db_scheduled_job.description.html_safe %>
+</p>
+
+<p>
+  <strong>Job status:</strong>
+  <%= DbJobStatus.find(@db_scheduled_job.db_job_status_id).name %>
+</p>
+
+<p>
+  <strong>Job freq:</strong>
+  <%= DbJobFreq.find(@db_scheduled_job.db_job_freq_id).name %>
+</p>
+
+<p>
+  <strong>Job owner:</strong>
+  <%= AppUser.find(@db_scheduled_job.app_user_id).name %>
+</p>
+
+<p>
+  <strong>Application:</strong>
+  <%= Application.find(@db_scheduled_job.application_id).name %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_db_scheduled_job_path(@db_scheduled_job) %> |
+<%= link_to 'Back', db_scheduled_jobs_path %>
+</div>

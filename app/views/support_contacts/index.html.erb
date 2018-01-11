@@ -1,0 +1,41 @@
+<h2>Listing Support contacts</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @support_contacts %>
+<% if can? :create, SupportContact %>
+<%= link_to 'New Support contact', new_support_contact_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+      <th></th>
+	  <th>Email</th>
+	  <th>Telephone</th>
+	  <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @support_contacts.each do |support_contact| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => support_contact, :locals => {:display => support_contact.name, :edit_path => edit_support_contact_path(support_contact)} %>
+        <td><%= support_contact.email_addr %></td>
+        <td><%= support_contact.telephone %></td>
+        <%= render :partial => "shared/delete_link", :object => support_contact, :locals => {:display => "Delete #{support_contact.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @support_contacts %>
+<% if can? :create, SupportContact %>
+<%= link_to 'New Support contact', new_support_contact_path %>
+<% end %>
+</div>

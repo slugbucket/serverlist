@@ -1,0 +1,69 @@
+<%= form_for(@db_scheduled_job) do |f| %>
+  <% if @db_scheduled_job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@db_scheduled_job.errors.count, "error") %> prohibited this db_scheduled_job from being saved:</h2>
+
+      <ul>
+      <% @db_scheduled_job.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 80%;">
+    <fieldset><legend>Scheduled job details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+  <div class="field" style="float: left;">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "serverlist" %>
+  </div>
+  <div class="field">
+    <%= f.label :db_instance_db_name_id, "Database" %><br>
+    <%= f.collection_select :db_instance_db_name_id, DbInstanceDbName.order(:db_instance_id), :id, :db_inst_name, {:prompt => "Target database"} %>
+  </div>
+  <div style="clear: both;"></div>
+
+  <div class="field" style="float: left;">
+    <%= f.label :db_job_type_id, "Job type" %><br>
+    <%= f.collection_select :db_job_type_id, DbJobType.order(:name), :id, :name, {:selected => @db_scheduled_job.db_job_type_id, :prompt => 'Scheduled job type', :class => "serverlist"} %>
+  </div>
+  <div class="field">
+    <%= f.label :db_job_host_id, "Job host" %><br>
+    <%= f.collection_select :db_job_host_id, DbInstance.order(:name), :id, :name, {:selected => @db_scheduled_job.db_job_host_id, :prompt => 'Scheduled job host', :class => "serverlist"} %>
+  </div>
+
+  <div style="clear: both;"></div>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, :rows => 6, :cols => 40, :class => "mceEditor" %>
+  </div>
+  <div style="clear: both;"></div>
+
+  <div class="field" style="float: left;">
+    <%= f.label :db_job_status_id, "Job status" %><br />
+    <%= f.collection_select :db_job_status_id, DbJobStatus.order(:name), :id, :name, {:selected => @db_scheduled_job.db_job_status_id, :prompt => 'Scheduled job status', :class => "serverlist"} %>
+  </div>
+  <div class="field" style="float: left;">
+    <%= f.label :db_job_freq_id, "Job frequency" %><br />
+    <%= f.collection_select :db_job_status_id, DbJobFreq.order(:name), :id, :name, {:selected => @db_scheduled_job.db_job_freq_id, :prompt => 'Scheduled job frequency', :class => "serverlist"} %>
+  </div>
+  <div class="field">
+    <%= f.label :db_job_owner_id, "Job owner" %><br />
+    <%= f.collection_select :db_job_owner_id, AppUser.order(:name), :id, :name, {:selected => @db_scheduled_job.app_user_id, :prompt => 'Job owned by', :class => "serverlist"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :application_id, "Application" %><br>
+    <%= f.collection_select :application_id, Application.order(:name), :id, :name, {:selected => @db_scheduled_job.application_id, :prompt => 'Application', :class => "serverlist"} %>
+  </div>
+    </fieldset>
+    </div>
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

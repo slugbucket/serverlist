@@ -1,0 +1,38 @@
+<h2>Listing Active Directory domains</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @ad_domains %>
+<% if can? :create, AdDomain %>
+<%= link_to 'New Active Directory domain', new_ad_domain_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+    <th>Name</th>
+    <th></th>
+    <th>Description</th>
+    <th>&nbsp;</th>
+    </tr>
+  </thead>
+<% @ad_domains.each do |ad_domain| %>
+  <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => ad_domain, :locals => {:display => ad_domain.name, :edit_path => edit_ad_domain_path(ad_domain)} %>
+    <td><%= ad_domain.description %></td>
+    <%= render :partial => "shared/delete_link", :object => ad_domain, :locals => {:display => "Delete #{ad_domain.name}" } %>
+  </tr>
+<% end %>
+</table>
+
+</p>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @ad_domains %>
+<% if can? :create, AdDomain %>
+<%= link_to 'New Active Directory domain', new_ad_domain_path %>
+<% end %>
+</div>
+</p>

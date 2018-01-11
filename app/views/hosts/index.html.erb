@@ -1,0 +1,46 @@
+<h2>Listing Hosts</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @hosts %>
+<% if can? :create, Host %>
+<%= link_to 'New Host', new_host_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Location</th>
+      <th>Primary use</th>
+	  <th>Model</th>
+      <th>O/S</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hosts.each do |host| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => host, :locals => {:display => host.name, :edit_path => edit_host_path(host)} %>
+        <td><%= Location.get_name(host.location_id) %></td>
+        <td><%= host.primary_use.html_safe %></td>
+        <td><%= Model.find(host.model_id).name %></td>
+		<td><%= OperatingSystem.get_name(host.operating_system_id) %></td>
+        <%= render :partial => "shared/delete_link", :object => host, :locals => {:display => "Delete #{host.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @hosts %>
+<% if can? :create, Host %>
+<%= link_to 'New Host', new_host_path %>
+<% end %>
+</div>
+</p>

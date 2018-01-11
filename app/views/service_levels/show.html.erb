@@ -1,0 +1,14 @@
+<p>
+  <strong>Name:</strong>
+  <%= @service_level.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @service_level.description %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_service_level_path(@service_level) %> |
+<%= link_to 'Back', service_levels_path %>
+</div>

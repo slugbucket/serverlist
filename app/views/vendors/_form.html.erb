@@ -1,0 +1,38 @@
+<%= form_for(@vendor) do |f| %>
+  <% if @vendor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this vendor from being saved:</h2>
+
+      <ul>
+      <% @vendor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: inline; float: left; width: 80%;">
+    <fieldset><legend>Vendor details</legend>
+
+      <div> <!-- wrapper around account details and help divs -->
+  <div class="field" style="float: left;">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "serverlist" %>
+  </div>
+  <div class="field">
+    <%= f.label :telephone %><br>
+    <%= f.text_field :telephone, :class => "serverlist" %>
+  </div>
+  <div style="clear: both;"></div>
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, :rows => 6, :cols => 40, :class => "mceEditor" %>
+    </div>
+    </fieldset>
+    </div>
+  <div style="clear: both;"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "button" %>
+  </div>
+<% end %>

@@ -1,0 +1,40 @@
+<h2>Listing Operation statuses</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @operation_statuses %>
+<% if can? :create, OperationStatus %>
+<%= link_to 'New Operation status', new_operation_status_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operation_statuses.each do |operation_status| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => operation_status, :locals => {:display => operation_status.name, :edit_path => edit_operation_status_path(operation_status)} %>
+        <td><%= operation_status.description %></td>
+        <%= render :partial => "shared/delete_link", :object => operation_status, :locals => {:display => "Delete #{operation_status.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @operation_statuses %>
+<% if can? :create, OperationStatus %>
+<%= link_to 'New Operation status', new_operation_status_path %>
+<% end %>
+</div>
+</p>

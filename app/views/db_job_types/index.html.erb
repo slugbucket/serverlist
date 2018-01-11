@@ -1,0 +1,37 @@
+<h2>Listing Database job typeS</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_job_types %>  <!-- app_user -->
+<% if can? :create, DbJobType %>
+<%= link_to 'New Database job type', new_db_job_type_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+      <th></th>
+    <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @db_job_types.each do |db_job_type| %>
+    <%= render :partial => "shared/edit_link", :object => db_job_type, :locals => {:display => db_job_type.name, :edit_path => edit_db_job_type_path(db_job_type)} %>
+        <%= render :partial => "shared/delete_link", :object => db_job_type, :locals => {:display => "Delete #{db_job_type.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_job_types %>
+<% if can? :create, DbJobType %>
+<%= link_to 'New Database job type', new_db_job_type_path %>
+<% end %>
+</div>
+</p>

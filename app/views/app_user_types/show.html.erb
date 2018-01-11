@@ -1,0 +1,14 @@
+<p>
+  <strong>Name:</strong>
+  <%= @app_user_type.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @app_user_type.description %>
+</p>
+
+<div class="serverlist">
+<%= link_to 'Edit', edit_app_user_type_path(@app_user_type) %> |
+<%= link_to 'Back', app_user_types_path %>
+</div>

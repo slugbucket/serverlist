@@ -1,0 +1,40 @@
+<h2>Listing Impact hours</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @impact_hours %>
+<% if can? :create, ImpactHour %>
+<%= link_to 'New Impact hour', new_impact_hour_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+	  <th></th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @impact_hours.each do |impact_hour| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => impact_hour, :locals => {:display => impact_hour.name, :edit_path => edit_impact_hour_path(impact_hour)} %>
+        <td><%= impact_hour.description %></td>
+        <%= render :partial => "shared/delete_link", :object => impact_hour, :locals => {:display => "Delete #{impact_hour.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @impact_hours %>
+<% if can? :create, ImpactHour %>
+<%= link_to 'New Impact hour', new_impact_hour_path %>
+<% end %>
+</div>
+</p>

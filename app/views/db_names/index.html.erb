@@ -1,0 +1,40 @@
+<h2>Listing Database names</h2>
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_names %>  <!-- app_user -->
+<% if can? :create, DbName %>
+<%= link_to 'New Database name', new_db_name_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+    <th>Name</th>
+    <th></th>
+	<th>Description</th>
+	<th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @db_names.each do |db_name| %>
+	<tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => db_name, :locals => {:display => db_name.name, :edit_path => edit_db_name_path(db_name)} %>
+        <td><%= db_name.description.html_safe %></td>
+        <%= render :partial => "shared/delete_link", :object => db_name, :locals => {:display => "Delete #{db_name.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @db_names %>
+<% if can? :create, DbName %>
+<%= link_to 'New Database name', new_db_name_path %>
+<% end %>
+</div>
+</p>

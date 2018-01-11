@@ -1,0 +1,47 @@
+<h2>Listing Warranty contracts</h2>
+<p>
+A list of warranty contract documents can be found at
+S:\Operations\ISD\Contracts Management\IT Contracts
+<br />
+<div class="digg_pagination">  
+<%= will_paginate @warranty_contracts %>
+<% if can? :create, WarrantyContract %>
+<%= link_to 'New Warranty contract', new_warranty_contract_path %>
+<% end %>
+</div>
+</p>
+<br />
+<p style="clear: both">
+<table class="serverlist" cellspacing="0">
+  <thead>
+    <tr class="serverlist">
+      <th>Name</th>
+      <th></th>
+	  <th>Description</th>
+      <th>Vendor</th>
+      <th>Expiry</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @warranty_contracts.each do |warranty_contract| %>
+    <tr class="<%= cycle('ma_row_light', 'ma_row_dark') %>">
+    <%= render :partial => "shared/edit_link", :object => warranty_contract, :locals => {:display => warranty_contract.name, :edit_path => edit_warranty_contract_path(warranty_contract)} %>
+        <td><%= warranty_contract.description.html_safe %></td>
+        <td><%= Vendor.find(warranty_contract.vendor_id).name %></td>
+        <td><%= warranty_contract.expiry.to_s(:my_date) %></td>
+        <%= render :partial => "shared/delete_link", :object => warranty_contract, :locals => {:display => "Delete #{warranty_contract.name}" } %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<div class="digg_pagination">  
+<%= will_paginate @warranty_contracts %>
+<% if can? :create, WarrantyContract %>
+<%= link_to 'New Warranty contract', new_warranty_contract_path %>
+<% end %>
+</div>
+</p>

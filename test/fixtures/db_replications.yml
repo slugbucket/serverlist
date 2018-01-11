@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 1st replication
+  db_repl_type_id: 1
+  db_repl_host_id: 1
+  db_repl_src_id: 1
+  db_repl_target_id: 1
+  description: First replication
+  db_repl_status_id: 1
+  db_repl_freq_id: 1
+  application_id: 1
+
+two:
+  name: 2nd replication
+  db_repl_type_id: 1
+  db_repl_host_id: 1
+  db_repl_src_id: 1
+  db_repl_target_id: 1
+  description: Second replication
+  db_repl_status_id: 1
+  db_repl_freq_id: 1
+  application_id: 1
